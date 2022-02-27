@@ -1,0 +1,38 @@
+<div class="mt-4" align="center">
+    <button (click)="autoRefreshToogle()" [ngClass]="Repeat == true ? 'btn btn-primary' : 'btn btn-success'">
+        <span> {{ Repeat ? "Turn Off Auto Refresh":" Turn On Auto Refresh"}} </span>
+    </button>
+    <button (click)="refreshApi()" [ngClass]="Repeat == true ? 'btn btn-primary d-none' : 'btn btn-warning ml-4'">
+        <span> Refresh </span>
+    </button>
+    <button (click)="reset()" class="btn btn-secondary ml-3">
+        <span> Reset </span>
+    </button>
+
+</div>
+
+<div>
+
+    <div id="wrapper" class="max-w-xl px-4 py-4 mx-auto">
+        <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
+            <app-data-card [value]="AgeCount" [text]="'Age > 50'"></app-data-card>
+            <app-data-card [value]="MaleCount" [text]="'No of Males'"></app-data-card>
+            <app-data-card [value]="FemaleCount" [text]="'No of Female'"></app-data-card>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container m-auto" >
+    
+    <ag-grid-angular style=" height: 500px; width: 1200px; margin:auto" 
+    class="ag-theme-alpine" 
+    [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+    [domLayout]= "'autoHeight'"
+    [rowHeight]="60"
+    [columnDefs]="columnDefs">
+    </ag-grid-angular>
+
+</div>
